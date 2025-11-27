@@ -1,0 +1,9 @@
+{
+  "name": "vulkan",
+  "version": "1.0.0",
+  "description": "Vulkan manufacturing monorepo",
+  "private": true,
+  "devDependencies": {
+    "@moonrepo/cli": "^1.41.7"
+  }
+}

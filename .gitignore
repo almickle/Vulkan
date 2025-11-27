@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# moon
+.moon/cache
+.moon/docker
+
+# Environment
+.env
+.env.local
