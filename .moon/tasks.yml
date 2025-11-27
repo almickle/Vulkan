@@ -1,0 +1,42 @@
+# Global tasks configuration
+# https://moonrepo.dev/docs/config/tasks
+
+tasks:
+  # Lint all TypeScript and JavaScript files
+  lint:
+    command: 'eslint . --ext .ts,.tsx,.js,.jsx'
+    inputs:
+      - '**/*.{ts,tsx,js,jsx}'
+      - '!**/node_modules/**'
+      - '!**/build/**'
+    options:
+      cache: true
+      runInCI: true
+    deps:
+      - '^:build'
+
+  # Format all supported files
+  format:
+    command: 'prettier --write .'
+    inputs:
+      - '**/*.{ts,tsx,js,jsx,json,md,mdx,html,css,scss}'
+      - '!**/node_modules/**'
+      - '!**/build/**'
+    options:
+      cache: true
+      runInCI: true
+    deps:
+      - '^:build'
+
+  # Type check TypeScript files
+  type-check:
+    command: 'tsc --noEmit'
+    inputs:
+      - '**/*.{ts,tsx}'
+      - '!**/node_modules/**'
+      - '!**/build/**'
+    options:
+      cache: true
+      runInCI: true
+    deps:
+      - '^:build'

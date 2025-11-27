@@ -4,6 +4,6 @@ $schema: './cache/schemas/workspace.json'
 # extends: './shared/workspace.yml'
 
 projects:
-  - 'apps/**/*'
-  - 'libraries/**/*'
-  - 'services/**/*'
+  - 'apps/*'
+  - 'libraries/*'
+  - 'services/*'
