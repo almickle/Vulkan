@@ -2,41 +2,53 @@
 # https://moonrepo.dev/docs/config/tasks
 
 tasks:
-  # Lint all TypeScript and JavaScript files
-  lint:
-    command: 'eslint . --ext .ts,.tsx,.js,.jsx'
+  build:
+    command: "tsc"
+    args: []
     inputs:
-      - '**/*.{ts,tsx,js,jsx}'
-      - '!**/node_modules/**'
-      - '!**/build/**'
-    options:
-      cache: true
-      runInCI: true
-    deps:
-      - '^:build'
+      - "tsconfig.json"
+      - "src/**/*.ts"
+      - "!**/node_modules/**"
 
-  # Format all supported files
+  rebuild:
+    extends: "build"
+    options:
+      cache: false
+
   format:
-    command: 'prettier --write .'
+    command: "prettier --write ."
     inputs:
-      - '**/*.{ts,tsx,js,jsx,json,md,mdx,html,css,scss}'
-      - '!**/node_modules/**'
-      - '!**/build/**'
-    options:
-      cache: true
-      runInCI: true
-    deps:
-      - '^:build'
+      - "**/*.{ts,tsx,js,jsx,json,md,mdx,html,css,scss}"
+      - "!**/node_modules/**"
+      - "!**/build/**"
 
-  # Type check TypeScript files
-  type-check:
-    command: 'tsc --noEmit'
+  ### Non mutating tasks ###
+
+  lint:
+    command: "eslint . --ext .ts,.tsx,.js,.jsx"
     inputs:
-      - '**/*.{ts,tsx}'
-      - '!**/node_modules/**'
-      - '!**/build/**'
-    options:
-      cache: true
-      runInCI: true
+      - "**/*.{ts,tsx,js,jsx}"
+      - "!**/node_modules/**"
+      - "!**/build/**"
     deps:
-      - '^:build'
+      - "^:build"
+
+  type-check:
+    command: "tsc --noEmit"
+    inputs:
+      - "**/*.{ts,tsx}"
+      - "!**/node_modules/**"
+      - "!**/build/**"
+    deps:
+      - "^:build"
+
+  ### Persistent tasks ###
+
+  host:
+    command: "node"
+    args: ["./dist/index.js", "--inspect-brk"]
+    inputs:
+      - "dist/**"
+    preset: "server"
+    deps:
+      - "^:build"

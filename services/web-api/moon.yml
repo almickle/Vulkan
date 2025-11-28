@@ -1,2 +1,21 @@
 type: "application"
 language: "typescript"
+
+tasks:
+  generate:
+    command: "prisma generate; node scripts/post-generate.js"
+    inputs:
+      - "prisma/schema.prisma"
+      - ".env"
+
+  migrate-dev:
+    command: "prisma migrate dev"
+    inputs:
+      - "prisma/schema.prisma"
+      - ".env"
+
+  bootstrap:
+    extends: "build"
+    deps:
+      - "generate"
+      - "migrate-dev"
