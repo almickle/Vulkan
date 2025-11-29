@@ -17,7 +17,7 @@ export function createApp(): express.Application {
   // error handler (last)
   app.use(
     (
-      err: any,
+      err: { statusCode?: number; message?: string },
       _req: express.Request,
       res: express.Response,
       _next: express.NextFunction

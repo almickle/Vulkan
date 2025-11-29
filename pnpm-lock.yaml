@@ -30,6 +30,9 @@ importers:
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
+      dotenv:
+        specifier: ^17.2.3
+        version: 17.2.3
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.6.1)
@@ -39,6 +42,9 @@ importers:
       globals:
         specifier: ^16.5.0
         version: 16.5.0
+      jiti:
+        specifier: ^2.6.1
+        version: 2.6.1
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -48,6 +54,8 @@ importers:
       typescript-eslint:
         specifier: ^8.48.0
         version: 8.48.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
+
+  packages/file-storage: {}
 
   services/web-api:
     dependencies:
@@ -67,12 +75,6 @@ importers:
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
-      dotenv:
-        specifier: ^17.2.3
-        version: 17.2.3
-      jiti:
-        specifier: ^2.6.1
-        version: 2.6.1
 
 packages:
 

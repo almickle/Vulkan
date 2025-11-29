@@ -1,0 +1,40 @@
+model PartDefinition {
+    id         String          @id @default(cuid())
+    name       String
+    properties PartProperties?
+    file       File?
+    instances  PartInstance[]  @relation(name: "PartDefinitionToPartInstance")
+}
+
+model PartProperties {
+    partId               String               @id
+    part                 PartDefinition       @relation(fields: [partId], references: [id])
+    manufacturingProcess ManufacturingProcess
+    material             Material
+    finish               Finish
+    thickness            Float?
+}
+
+model File {
+    partId     String         @id
+    part       PartDefinition @relation(fields: [partId], references: [id])
+    type       FileType
+    storageKey String
+    sizeBytes  Int
+}
+
+model PartInstance {
+    id          String             @id @default(cuid())
+    name        String
+    part        PartDefinition     @relation(name: "PartDefinitionToPartInstance", fields: [partId], references: [id])
+    partId      String
+    assembly    AssemblyDefinition @relation(name: "AssemblyDefinitionToPartInstance", fields: [assemblyId], references: [id])
+    assemblyId  String
+    positionX   Float
+    positionY   Float
+    positionZ   Float
+    quaternionW Float
+    quaternionX Float
+    quaternionY Float
+    quaternionZ Float
+}

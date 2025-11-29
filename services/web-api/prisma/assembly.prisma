@@ -1,0 +1,23 @@
+model AssemblyDefinition {
+    id            String             @id @default(cuid())
+    name          String
+    parts         PartInstance[]     @relation(name: "AssemblyDefinitionToPartInstance")
+    subAssemblies AssemblyInstance[] @relation(name: "ParentAssemblyToChildAssemblyInstances")
+    instances     AssemblyInstance[] @relation(name: "AssemblyDefinitionToAssemblyInstance")
+}
+
+model AssemblyInstance {
+    id               String              @id @default(cuid())
+    name             String
+    assembly         AssemblyDefinition  @relation(name: "AssemblyDefinitionToAssemblyInstance", fields: [assemblyId], references: [id])
+    assemblyId       String
+    parentAssembly   AssemblyDefinition? @relation(name: "ParentAssemblyToChildAssemblyInstances", fields: [parentAssemblyId], references: [id])
+    parentAssemblyId String?
+    positionX        Float
+    positionY        Float
+    positionZ        Float
+    quaternionW      Float
+    quaternionX      Float
+    quaternionY      Float
+    quaternionZ      Float
+}

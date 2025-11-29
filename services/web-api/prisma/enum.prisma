@@ -1,0 +1,20 @@
+enum ManufacturingProcess {
+    SHEET_METAL
+    CNC
+    INJECTION_MOLDING
+    PCB
+}
+
+enum Finish {
+    POWDER_COAT
+}
+
+enum Material {
+    ALUMINUM
+    STEEL
+}
+
+enum FileType {
+    STEP
+    STL
+}

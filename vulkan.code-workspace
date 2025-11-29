@@ -1,21 +1,21 @@
 {
-	"folders": [
-		{
-			"name": "apps",
-			"path": "apps"
-		},
-		{
-			"name": "libraries",
-			"path": "libraries"
-		},
-		{
-			"name": "services",
-			"path": "services"
-		},
-		{
-			"name": "root",
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "name": "apps",
+      "path": "apps"
+    },
+    {
+      "name": "packages",
+      "path": "packages"
+    },
+    {
+      "name": "services",
+      "path": "services"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "settings": {}
 }

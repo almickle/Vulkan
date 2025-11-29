@@ -42,31 +42,13 @@ export async function createUser(
   try {
     const { email, name } = req.body;
 
-    // You can generate id here instead of passing it from the client:
     const user = await userRepo.createUser({
-      id: crypto.randomUUID(), // or let Prisma default handle it and remove id from data
+      id: crypto.randomUUID(),
       email,
       name
     });
 
     res.status(201).json(user);
-  } catch (err) {
-    next(err);
-  }
-}
-
-export async function updateUser(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  try {
-    const { id } = req.params;
-    const { email, name } = req.body;
-
-    const user = await userRepo.updateUser(id, { email, name });
-
-    res.json(user);
   } catch (err) {
     next(err);
   }

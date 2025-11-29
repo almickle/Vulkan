@@ -1,29 +1,29 @@
-type: "application"
+layer: "application"
 language: "typescript"
 
 tasks:
   generate:
     command: "prisma generate; node scripts/post-generate.js"
     inputs:
-      - "prisma/schema.prisma"
+      - "prisma/*.prisma"
       - ".env"
     deps:
       - "validate"
 
   migrate:
-    command: "prisma migrate dev"
+    command: "prisma migrate prod"
     inputs:
-      - "prisma/schema.prisma"
+      - "prisma/*.prisma"
       - ".env"
     deps:
       - "validate"
 
   migrate-dev:
-    command: "prisma migrate dev"
+    command: "prisma migrate dev --name $(date +%Y%m%d%H%M%S)"
     options:
       interactive: true
     inputs:
-      - "prisma/schema.prisma"
+      - "prisma/*.prisma"
       - ".env"
     deps:
       - "validate"
@@ -31,10 +31,4 @@ tasks:
   validate:
     command: "prisma validate"
     inputs:
-      - "prisma/schema.prisma"
-
-  bootstrap:
-    extends: "build"
-    deps:
-      - "generate"
-      - "migrate"
+      - "prisma/*.prisma"
