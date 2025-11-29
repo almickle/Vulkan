@@ -7,15 +7,34 @@ tasks:
     inputs:
       - "prisma/schema.prisma"
       - ".env"
+    deps:
+      - "validate"
 
-  migrate-dev:
+  migrate:
     command: "prisma migrate dev"
     inputs:
       - "prisma/schema.prisma"
       - ".env"
+    deps:
+      - "validate"
+
+  migrate-dev:
+    command: "prisma migrate dev"
+    options:
+      interactive: true
+    inputs:
+      - "prisma/schema.prisma"
+      - ".env"
+    deps:
+      - "validate"
+
+  validate:
+    command: "prisma validate"
+    inputs:
+      - "prisma/schema.prisma"
 
   bootstrap:
     extends: "build"
     deps:
       - "generate"
-      - "migrate-dev"
+      - "migrate"
