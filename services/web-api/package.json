@@ -6,6 +6,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.0.1",
     "@prisma/client": "^7.0.1",
+    "@vulkan/storage-adapter": "workspace:*",
     "express": "^5.1.0",
     "prisma": "^7.0.1"
   },

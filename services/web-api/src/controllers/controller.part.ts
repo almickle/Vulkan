@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import * as partsRepo from "../repositories/parts.repo.js";
+import { partRepo } from "../repositories";
 
 export async function getAllParts(
   _req: Request,
@@ -7,7 +7,7 @@ export async function getAllParts(
   next: NextFunction
 ) {
   try {
-    const parts = await partsRepo.getAllParts();
+    const parts = await partRepo.getAllParts();
     res.json(parts);
   } catch (err) {
     next(err);
@@ -21,7 +21,7 @@ export async function getPartById(
 ) {
   try {
     const { id } = req.params;
-    const part = await partsRepo.getPartById(id);
+    const part = await partRepo.getPartById(id);
 
     if (!part) {
       res.status(404).json({ error: "Part not found" });
@@ -29,6 +29,20 @@ export async function getPartById(
     }
 
     res.json(part);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function checkPartExists(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { id } = req.params;
+    const exists = (await partRepo.getPartCount(id)) > 0;
+    res.json(exists);
   } catch (err) {
     next(err);
   }
@@ -42,7 +56,7 @@ export async function createPart(
   try {
     const { name } = req.body;
 
-    const part = await partsRepo.createPart({
+    const part = await partRepo.createPart({
       id: crypto.randomUUID(),
       name
     });
@@ -61,7 +75,7 @@ export async function updatePartProperties(
   try {
     const properties = req.body;
 
-    const updatedProperties = await partsRepo.updatePartProperties({
+    const updatedProperties = await partRepo.updatePartProperties({
       properties
     });
 

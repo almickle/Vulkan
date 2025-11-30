@@ -1,0 +1,6 @@
+model File {
+    partId    String         @id
+    part      PartDefinition @relation(fields: [partId], references: [id])
+    type      FileType
+    sizeBytes Int?
+}

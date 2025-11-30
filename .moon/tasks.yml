@@ -22,6 +22,14 @@ tasks:
       - "!**/node_modules/**"
       - "!**/build/**"
 
+  clean:
+    command: "rm -rf dist && rm -rf node_modules"
+    inputs:
+      - "dist/**"
+      - "node_modules/**"
+    options:
+      cache: false
+
   ### Non mutating tasks ###
 
   lint:
@@ -39,16 +47,5 @@ tasks:
       - "**/*.{ts,tsx}"
       - "!**/node_modules/**"
       - "!**/build/**"
-    deps:
-      - "^:build"
-
-  ### Persistent tasks ###
-
-  host:
-    command: "node"
-    args: ["./dist/index.js", "--inspect-brk"]
-    inputs:
-      - "dist/**"
-    preset: "server"
     deps:
       - "^:build"

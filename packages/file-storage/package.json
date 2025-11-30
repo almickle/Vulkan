@@ -1,8 +1,0 @@
-{
-  "name": "@vulkan/file-storage",
-  "version": "1.0.0",
-  "description": "Vulkan manufacturing file storage abstraction layer",
-  "type": "module",
-  "dependencies": {},
-  "devDependencies": {}
-}

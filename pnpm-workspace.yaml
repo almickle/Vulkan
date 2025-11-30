@@ -4,6 +4,7 @@ packages:
   - services/*
 
 onlyBuiltDependencies:
-  - "@prisma/client"
-  - "@prisma/engines"
+  - '@prisma/client'
+  - '@prisma/engines'
+  - esbuild
   - prisma

@@ -1,18 +1,17 @@
 import express from "express";
-import router from "./routes";
+import router from "@/routes";
 
 export function createApp(): express.Application {
   const app = express();
 
-  app.use(express.json());
+  app.use(express.raw({ type: "*/*", limit: "50mb" })); // for binary file uploads
 
   // health route early & simple
   app.get("/health", (_req, res) => {
     res.json({ status: "ok" });
   });
 
-  // main API router (versioned)
-  app.use("/api", router);
+  app.use("/", router);
 
   // error handler (last)
   app.use(

@@ -17,5 +17,8 @@
       "path": "."
     }
   ],
-  "settings": {}
+  "settings": {
+    "prettier.prettierPath": "",
+    "prettier.jsxSingleQuote": true
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "name": "@vulkan/storage-adapter",
+  "version": "1.0.0",
+  "description": "Vulkan manufacturing file storage abstraction layer",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.940.0",
+    "@aws-sdk/s3-request-presigner": "^3.940.0"
+  }
+}

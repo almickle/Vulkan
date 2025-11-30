@@ -1,0 +1,12 @@
+{
+  "name": "@vulkan/local-storage",
+  "version": "1.0.0",
+  "description": "Vulkan manufacturing web backend API",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5"
+  }
+}

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import * as userRepo from "../repositories/users.repo.js";
+import { userRepo } from "../repositories";
 
 export async function getAllUsers(
   req: Request,

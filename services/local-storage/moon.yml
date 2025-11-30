@@ -1,0 +1,14 @@
+layer: "application"
+language: "typescript"
+
+tasks:
+  ### Persistent tasks ###
+  host:
+    command: "tsx"
+    args: ["./src/index.ts"]
+    preset: "server"
+    deps:
+      - lint
+      - "^:lint"
+      - "type-check"
+      - "^:type-check"
