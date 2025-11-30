@@ -8,7 +8,8 @@ tasks:
     args: ["./src/index.ts"]
     preset: "server"
     deps:
-      - lint
       - "^:lint"
-      - "type-check"
       - "^:type-check"
+      - "^:build"
+      - "lint"
+      - "type-check"

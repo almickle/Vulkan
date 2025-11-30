@@ -1,2 +1,6 @@
 layer: "library"
 language: "typescript"
+
+workspace:
+  inheritedTasks:
+    exclude: ["host"]

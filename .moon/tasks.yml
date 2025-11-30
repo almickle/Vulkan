@@ -49,3 +49,15 @@ tasks:
       - "!**/build/**"
     deps:
       - "^:build"
+
+  ### Persistent tasks ###
+  host:
+    command: "tsx"
+    args: ["./src/index.ts"]
+    preset: "server"
+    deps:
+      - "^:lint"
+      - "^:type-check"
+      - "^:build"
+      - "lint"
+      - "type-check"
